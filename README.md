@@ -2,7 +2,7 @@
 
 Este projeto é um exemplo de um sistema bancário simples implementado em C# para agregar nos meus estudos acerca dos princípios da Programação Orientada a Objetos (POO). O sistema inclui funcionalidades básicas de contas bancárias, operações de depósito e saque, aplicação de juros.
 
-## Funcionalidades
+## Classes e suas funcionalidades
 - Conta Bancária: Classe base com métodos para depositar, sacar e exibir informações da conta.
 - Conta Corrente: Herda de Conta Bancária e adiciona a funcionalidade de limite de saque.
 - Conta Poupança: Herda de Conta Bancária e adiciona a funcionalidade de aplicação de juros.
