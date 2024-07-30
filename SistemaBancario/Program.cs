@@ -1,4 +1,5 @@
 ﻿using SistemaBancario.Models;
+using SistemaBancario.Services;
 
 namespace SistemaBancario
 {
@@ -6,34 +7,45 @@ namespace SistemaBancario
     {
         public static void Main(string[] args)
         {
-            // Criando contas corrente
-            ContaCorrente cc = new ContaCorrente("12345-X", 50, 40);
-            cc.Depositar(10);
-            cc.Sacar(100);
+            // Criando contas
+            ContaCorrente cc = new ContaCorrente("12345", 500, 100);
+            ContaPoupanca cp = new ContaPoupanca("67890", 50, 1.5);
+
+            // Criando clientes
+            Cliente cliente1 = new Cliente("João Silva", "123.456.789-00", cc);
+            Cliente cliente2 = new Cliente("Maria Oliveira", "987.654.321-00", cp);
+
+            // Criando banco e adicionando contas
+            Banco banco = new Banco();
+            banco.AdicionarConta(cc);
+            banco.AdicionarConta(cp);
+            Console.WriteLine();
+
+            // Operações nas contas
+            Console.WriteLine("Operações na Conta Corrente:");
+            cc.Depositar(1000);
+            cc.Sacar(200);
             cc.ExibirInformacoes();
+            Console.WriteLine();
 
-            ContaCorrente cc2 = new ContaCorrente("67890-0", 100, 40);
-            cc2.Depositar(40);
-            cc2.Sacar(100);
-            cc2.ExibirInformacoes();
-
-            ContaCorrente cc3 = new ContaCorrente("64654-1", 40, 10);
-            cc3.Depositar(20);
-            cc3.Sacar(1000);
-            cc3.ExibirInformacoes();
-
-            // Criando contas poupança
-            ContaPoupanca cp = new ContaPoupanca("54789-3", 80, 1.5);
-            cp.Depositar(30);
-            cp.Sacar(20);
+            Console.WriteLine("Operações na Conta Poupança:");
+            cp.Depositar(1500);
             cp.AplicarJuros();
             cp.ExibirInformacoes();
+            Console.WriteLine();
 
-            ContaPoupanca cp2 = new ContaPoupanca("54789-3", 60, 0.5);
-            cp2.Depositar(10);
-            cp2.Sacar(50);
-            cp2.AplicarJuros();
-            cp2.ExibirInformacoes();
+            // Exibir informações dos clientes
+            Console.WriteLine("Informações do Cliente 1:");
+            cliente1.ExibirInformacoes();
+            Console.WriteLine();
+
+            Console.WriteLine("Informações do Cliente 2:");
+            cliente2.ExibirInformacoes();
+            Console.WriteLine();
+
+            // Exibir todas as contas no banco
+            Console.WriteLine("Informações de Todas as Contas no Banco:");
+            banco.ExibirTodasAsContas();
         }
     }
 }
